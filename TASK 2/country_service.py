@@ -28,7 +28,7 @@ def store_country_data(country_name):
         gdp_per_capita = data.get('gdp_per_capita', 0)
 
         create_table_query = '''
-        CREATE TABLE IF NOT EXISTS New_table (
+        CREATE TABLE IF NOT EXISTS country_detail (
             id SERIAL PRIMARY KEY,
             name VARCHAR(100),
             population BIGINT,
@@ -46,7 +46,7 @@ def store_country_data(country_name):
         cur.execute(create_table_query)
 
         insert_query = '''
-        INSERT INTO New_table (name, population, capital, currency, region, urban_population, urban_population_growth, exports, gdp, gdp_growth, gdp_per_capita)
+        INSERT INTO country_detail (name, population, capital, currency, region, urban_population, urban_population_growth, exports, gdp, gdp_growth, gdp_per_capita)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         '''
         cur.execute(insert_query, (
@@ -77,7 +77,7 @@ def generate_summary(country_name):
 
     select_query = '''
     SELECT name, population, capital, currency, region, urban_population, urban_population_growth, exports, gdp, gdp_growth, gdp_per_capita
-    FROM New_table
+    FROM country_detail
     WHERE name ILIKE %s
     '''
     cur.execute(select_query, (country_name,))
