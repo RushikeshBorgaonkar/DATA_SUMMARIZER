@@ -2,3 +2,5 @@ In TASK 2  the main1.py file has added a new prompt which focus on the 2 paramet
 
 Further the code is separated into different files and a new prompt.py file is created where written different 
 prompts.
+
+Even the changes were told by mentor are already done in TASK 2  .
